@@ -1,6 +1,10 @@
 const path = require('path')
+const isDev = process.env.NODE_ENV === 'development' // 启动时设置的环境变量都在process.env中
+const webpack = require('webpack')
+const HTMLPlugin = require('html-webpack-plugin')
 
-module.exports = {
+const config = {
+  target: 'web',
   entry: path.join(__dirname, 'src/index.js'),
   output: {
     filename: 'bundle.js',
@@ -20,20 +24,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.styl$/, // 其他的css预处理器都按照如此方法安装使用
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true, // 使用前面（stylus-loader）插件生成的sourceMap 不重复生成
-            }
-          },
-          'stylus-loader'
-        ]
-      },
-      {
         test: /\.(png|gif|jpg|jpeg|svg)$/,
         use: [
           {
@@ -46,5 +36,79 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: isDev ? '"development"' : '"production"'
+      }
+    }),
+    new HTMLPlugin()
+  ]
 }
+console.log('###isDev', isDev)
+if(isDev) {
+  config.module.rules.push({
+    test: /\.styl/,
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+        }
+      },
+      'stylus-loader'
+    ]
+  })
+  config.devtool = '#cheap-module-eval-source-map'
+  config.devServer = {
+    port: 8080,
+    host: '0.0.0.0', // 支持 localhost、127.0.0.1、ip直接访问
+    overlay: {
+      errors: true // 错误展示在网页上
+    },
+    hot: true,
+    open: true
+  }
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  )
+} else {
+  config.entry = {
+    app: path.join(__dirname, 'src/index.js'),
+    vendor: ['vue']
+  }
+  config.output.filename = '[name].[chunkhash:8].js'
+  config.module.rules.push(
+    {
+      test: /\.styl/,
+      use: ExtractPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+            }
+          },
+          'stylus-loader'
+        ]
+      })
+    }
+  )
+  config.plugins.push(
+    new ExtractPlugin('styles.[contentHash:8].css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime'
+    })
+  )
+}
+
+module.exports = config
