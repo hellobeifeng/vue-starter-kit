@@ -1,13 +1,14 @@
 const path = require('path')
 const isDev = process.env.NODE_ENV === 'development' // 启动时设置的环境变量都在process.env中
 const webpack = require('webpack')
+const ExtractPlugin = require('extract-text-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin')
 
 const config = {
   target: 'web',
   entry: path.join(__dirname, 'src/index.js'),
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, 'dist')
   },
   module: {
@@ -46,7 +47,8 @@ const config = {
     new HTMLPlugin()
   ]
 }
-console.log('###isDev', isDev)
+
+// 根据环境设置webpack
 if(isDev) {
   config.module.rules.push({
     test: /\.styl/,
@@ -65,7 +67,7 @@ if(isDev) {
   config.devtool = '#cheap-module-eval-source-map'
   config.devServer = {
     port: 8080,
-    host: '0.0.0.0', // 支持 localhost、127.0.0.1、ip直接访问
+    host: 'localhost',
     overlay: {
       errors: true // 错误展示在网页上
     },
@@ -102,9 +104,12 @@ if(isDev) {
   )
   config.plugins.push(
     new ExtractPlugin('styles.[contentHash:8].css'),
+     // 实现类库文件的独立打包，注意名字要和上面的vender相同
+     // 此处如果省略，则会产出一个vender但是原有的app.js中还包含被分离出去的vernder代码
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
     }),
+    // 将 生成在app.js中webpack的相关的代码
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime'
     })
