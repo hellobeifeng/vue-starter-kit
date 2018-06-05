@@ -18,6 +18,10 @@ const config = {
         loader: 'vue-loader' 
       },
       {
+        test: /\.jsx$/,
+        loader: 'babel-loader'
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
@@ -25,13 +29,13 @@ const config = {
         ]
       },
       {
-        test: /\.(png|gif|jpg|jpeg|svg)$/,
+        test: /\.(gif|jpg|jpeg|png|svg)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 10240, // 单位为b, 少于此处Limit的图片不会被单独输出成文件，而是会被转码成base64输出在文件中
-              name: '[name]-feng.[ext]'
+              limit: 8192, // 8Kb;少于此处Limit的图片不会被单独输出成文件，而是会被转码成base64输出在文件中
+              name: '[name]-large.[ext]'
             }
           }
         ]
@@ -83,37 +87,37 @@ if(isDev) {
     app: path.join(__dirname, 'src/index.js'),
     vendor: ['vue']
   }
-  config.output.filename = '[name].[chunkhash:8].js'
-  config.module.rules.push(
-    {
-      test: /\.styl/,
-      use: ExtractPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-            }
-          },
-          'stylus-loader'
-        ]
-      })
-    }
-  )
-  config.plugins.push(
-    new ExtractPlugin('styles.[contentHash:8].css'),
-     // 实现类库文件的独立打包，注意名字要和上面的vender相同
-     // 此处如果省略，则会产出一个vender但是原有的app.js中还包含被分离出去的vernder代码
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
-    }),
-    // 将 生成在app.js中webpack的相关的代码
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime'
-    })
-  )
+  // config.output.filename = '[name].[chunkhash:8].js'
+  // config.module.rules.push(
+  //   {
+  //     test: /\.styl/,
+  //     use: ExtractPlugin.extract({
+  //       fallback: 'style-loader',
+  //       use: [
+  //         'css-loader',
+  //         {
+  //           loader: 'postcss-loader',
+  //           options: {
+  //             sourceMap: true,
+  //           }
+  //         },
+  //         'stylus-loader'
+  //       ]
+  //     })
+  //   }
+  // )
+  // config.plugins.push(
+  //   new ExtractPlugin('styles.[contentHash:8].css'),
+  //    // 实现类库文件的独立打包，注意名字要和上面的vender相同
+  //    // 此处如果省略，则会产出一个vender但是原有的app.js中还包含被分离出去的vernder代码
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'vendor'
+  //   }),
+  //   // 将 生成在app.js中webpack的相关的代码
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'runtime'
+  //   })
+  // )
 }
 
 module.exports = config

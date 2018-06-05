@@ -57,7 +57,6 @@ export default {
   line-height 30px
   background-color #fff
   font-size 14px
-  font-smoothing: antialiased
 }
 .left, .clear, .tabs{
   padding 0 10px

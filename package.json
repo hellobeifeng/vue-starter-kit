@@ -7,8 +7,7 @@
     "build:client": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "build": "npm run clean && npm run build:client",
     "clean": "rimraf dist",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,7 @@
   },
   "homepage": "https://github.com/hellobeifeng/vue-starter-kit#readme",
   "devDependencies": {
+    "autoprefixer": "7.2.3",
     "babel-core": "6.26.0",
     "babel-helper-vue-jsx-merge-props": "2.0.3",
     "babel-loader": "7.1.2",
