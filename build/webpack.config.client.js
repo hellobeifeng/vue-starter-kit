@@ -9,8 +9,11 @@ const isDev = process.env.NODE_ENV === 'development' // 启动时设置的环境
 // 根据环境设置webpack
 let config
 const devServer = {
-  port: 8080,
   host: 'localhost',
+  port: 8080,
+  historyApiFallback: {
+    index: 'index.html'
+  },
   overlay: {
     errors: true // 错误展示在网页上
   },
@@ -26,6 +29,7 @@ const defaultPlugins = [
   }),
   new HTMLPlugin({
     title: 'vue 脚手架',
+    template: path.join(__dirname, 'template.html')
   })
 ]
 

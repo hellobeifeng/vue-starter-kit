@@ -7,6 +7,12 @@ const config = {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist')
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+     '@': path.join(__dirname, '../src')
+    }
+  },
   module: {
     rules: [
       {
@@ -17,7 +23,7 @@ const config = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader' 
+        loader: 'vue-loader'
       },
       {
         test: /\.jsx$/,

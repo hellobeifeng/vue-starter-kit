@@ -1,6 +1,6 @@
 <template>
   <div :class="['todo-item', todo.completed ? 'completed' : '']">
-    <input 
+    <input
       type="checkbox"
       class="toggle"
       v-model="todo.completed"

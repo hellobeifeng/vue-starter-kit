@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="cover"></div>
-    <Header></Header>
-    <todo></todo>
+    <router-link to="/app" class="link">app</router-link>
+    <router-link to="/test" class="link">test</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -18,21 +18,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-#app{
-  position absolute
-  left 0
-  right 0
-  top 0
-  bottom 0
-  #cover{
-    position absolute
-    left 0
-    top 0
-    right 0
-    bottom 0
-    background-color #999
-    opacity .6
-    z-index -1
-  }
-}
+
 </style>
