@@ -10,3 +10,4 @@
 
 ### TODO
 - [ ] 使用 vuex 改造 todo
+- [ ] 配置resolve alias

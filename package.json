@@ -4,10 +4,10 @@
   "description": "一个用于快速搭建前端vue工程的脚手架",
   "main": "index.js",
   "scripts": {
-    "build:client": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
     "build": "npm run clean && npm run build:client",
     "clean": "rimraf dist",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
   },
   "repository": {
     "type": "git",
@@ -38,12 +38,13 @@
     "vue-loader": "13.6.0",
     "vue-template-compiler": "2.5.13",
     "webpack": "3.10.0",
-    "webpack-dev-server": "2.9.7"
-  },
-  "dependencies": {
+    "webpack-dev-server": "2.9.7",
+    "webpack-merge": "^4.1.2",
     "file-loader": "^1.1.11",
     "style-loader": "^0.21.0",
-    "url-loader": "^1.0.1",
+    "url-loader": "^1.0.1"
+  },
+  "dependencies": {
     "vue": "2.5.13"
   }
 }

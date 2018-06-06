@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from './todo/header.vue'
-import Todo from './todo/todo.vue'
+import Header from './layout/header.vue'
+import Todo from './views/todo/todo.vue'
 export default {
   components: {
     Header,

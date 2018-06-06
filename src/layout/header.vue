@@ -11,8 +11,8 @@
   margin-bottom 50px;
   h1{
     font-size 50px
-    color: rgba(175, 47, 47, 0.4)
-    font-weight 100
+    color: black
+    font-weight 400
     margin: 20px
   }
 }
