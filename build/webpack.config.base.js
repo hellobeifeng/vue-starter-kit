@@ -10,6 +10,12 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(vue|js)/,
+        loader: 'eslint-loader',
+        exclude: /node_module/,
+        enforce: 'pre' // 对于这几种类型的文件在真正的loader处理之前，先执行此处的预处理
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader' 
       },

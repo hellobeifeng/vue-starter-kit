@@ -12,7 +12,7 @@ import Todo from './views/todo/todo.vue'
 export default {
   components: {
     Header,
-    Todo,
+    Todo
   }
 }
 </script>
@@ -36,4 +36,3 @@ export default {
   }
 }
 </style>
-
