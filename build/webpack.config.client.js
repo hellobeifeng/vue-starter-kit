@@ -24,7 +24,9 @@ const defaultPlugins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    title: 'vue 脚手架',
+  })
 ]
 
 if(isDev) {
@@ -88,7 +90,7 @@ if(isDev) {
       new ExtractPlugin('styles.[contentHash:8].css'),
       // 实现类库文件的独立打包，注意名字要和上面的vender相同
      new webpack.optimize.CommonsChunkPlugin({
-       name: 'vendor' 
+       name: 'vendor'
      }),
      // 将 生成在app.js中webpack的相关的代码
      new webpack.optimize.CommonsChunkPlugin({
