@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './store/index'
 import App from './app.vue'
 import './assets/styles/global.styl'
 import createRouter from './config/router'
@@ -28,5 +29,6 @@ router.afterEach((to, from) => {
 
 new Vue({
   router,
+  store,
   render: (h) => h(App)
 }).$mount('#root')
