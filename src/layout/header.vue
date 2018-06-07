@@ -1,19 +1,18 @@
 <template>
   <header class="main-header">
-    <h1>脚手架程序 - TODO功能测试</h1>
+    【假装我是一个导航栏- 模拟vue-router】
+    <router-link :to="{name: 'todo'}" class="link">app</router-link>
+    <router-link to="/test" class="link">test</router-link>
+    <router-link to="/todo/123" class="link">t123</router-link>
+    <router-link to="/todo/456" class="link">t345</router-link>
   </header>
 </template>
 
 <style lang="stylus" scoped>
 .main-header{
   text-align center
-  margin-top 120px
+  margin-top 20px
   margin-bottom 50px;
-  h1{
-    font-size 50px
-    color: black
-    font-weight 400
-    margin: 20px
-  }
+  font-size: 30px;
 }
 </style>
