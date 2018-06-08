@@ -2,7 +2,7 @@ const path = require('path')
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, '../src/index.js'), // default
+  entry: path.join(__dirname, '../client/index.js'), // default
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist')
@@ -10,7 +10,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-     '@': path.join(__dirname, '../src')
+     '@': path.join(__dirname, '../client')
     }
   },
   module: {
