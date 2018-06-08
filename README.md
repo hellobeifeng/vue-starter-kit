@@ -9,7 +9,3 @@
 - [x] 支持 precommit git hook
 - [x] 使用 webpack-dev-server 运行 开发环境时，自动打开浏览器
 - [x] 预设了对 css / jsx / vue / stylus 文件和主流图片类型的文件编译支持
-
-### TODO
-- [ ] 使用 vuex 改造 todo
-- [ ] proxy
