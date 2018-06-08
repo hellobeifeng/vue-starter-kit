@@ -1,12 +1,15 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import store from './store/index'
 import App from './app.vue'
 import './assets/styles/global.styl'
 import createRouter from './config/router'
+import createStore from './store/index'
 
+Vue.use(Vuex)
 Vue.use(VueRouter)
 const router = createRouter()
+const store = createStore()
 
 router.beforeEach((to, from, next) => {
   console.log('before each invoked')

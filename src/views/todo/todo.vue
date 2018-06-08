@@ -1,5 +1,6 @@
 <template>
   <section class="real-app">
+    <p>看这里看这里{{ fullName }} {{ count }}</p>
     <input
       type="text"
       class="add-input"
@@ -25,6 +26,8 @@
 <script>
 import Item from './item.vue'
 import Tabs from './tabs.vue'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
+
 let id = 0
 export default {
   data () {
@@ -37,7 +40,29 @@ export default {
     Item,
     Tabs
   },
+  mounted () {
+    // let i = 1
+    this.updateCountSync({
+      num: 5,
+      time: 2000
+    })
+    // this.$store.dispatch('updateCountSync', {
+    //   num: 5,
+    //   time: 2000
+    // })
+    // setInterval(() => {
+    //   this.updateCount({
+    //     num: i++,
+    //     num2: 2
+    //   })
+    // }, 1000)
+  },
   computed: {
+    ...mapState(['count']), // {counter: 'count'} 用来替代直接使用$store.state.count
+    ...mapGetters(['fullName']),
+    // fullName () {
+    //   return this.$store.getters.fullName
+    // },
     filteredTodos () {
       if (this.filter === 'all') {
         return this.todos
@@ -47,6 +72,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['updateCountSync']),
+    ...mapMutations(['updateCount']),
     addTodo (e) {
       this.todos.unshift({
         id: id++,
