@@ -7,10 +7,12 @@
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
     "build": "npm run clean && npm run build:client",
     "clean": "rimraf dist",
-    "lint": "eslint --ext .js --ext .vue src/",
-    "lint-fix": "eslint --fix --ext .js --ext .vue src/",
+    "lint": "eslint --ext .js --ext .vue client/",
+    "lint-fix": "eslint --fix --ext .js --ext .vue client/",
     "precommit": "npm run lint-fix",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev:server": "nodemon server/server.js",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
   },
   "repository": {
     "type": "git",

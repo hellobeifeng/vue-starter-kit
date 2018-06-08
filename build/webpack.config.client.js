@@ -4,6 +4,7 @@ const ExtractPlugin = require('extract-text-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 const isDev = process.env.NODE_ENV === 'development' // 启动时设置的环境变量都在process.env中
 // 根据环境设置webpack
@@ -30,7 +31,8 @@ const defaultPlugins = [
   new HTMLPlugin({
     title: 'vue 脚手架',
     template: path.join(__dirname, 'template.html')
-  })
+  }),
+  new VueClientPlugin()
 ]
 
 if(isDev) {
@@ -67,7 +69,7 @@ if(isDev) {
       filename: '[name].[chunkhash:8].js'
     },
     entry: {
-      app: path.join(__dirname, '../src/index.js'),
+      app: path.join(__dirname, '../client/index.js'),
       vendor: ['vue']
     },
     module: {

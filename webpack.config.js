@@ -6,7 +6,7 @@ const HTMLPlugin = require('html-webpack-plugin')
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, 'src/index.js'),
+  entry: path.join(__dirname, 'client/index.js'),
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, 'dist')
@@ -15,7 +15,7 @@ const config = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader' 
+        loader: 'vue-loader'
       },
       {
         test: /\.jsx$/,
@@ -84,7 +84,7 @@ if(isDev) {
   )
 } else {
   config.entry = {
-    app: path.join(__dirname, 'src/index.js'),
+    app: path.join(__dirname, 'client/index.js'),
     vendor: ['vue']
   }
   config.output.filename = '[name].[chunkhash:8].js'
@@ -110,7 +110,7 @@ if(isDev) {
     new ExtractPlugin('styles.[contentHash:8].css'),
      // 实现类库文件的独立打包，注意名字要和上面的vender相同
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor' 
+      name: 'vendor'
     }),
     // 将 生成在app.js中webpack的相关的代码
     new webpack.optimize.CommonsChunkPlugin({
