@@ -53,7 +53,7 @@ const config = {
 }
 
 // 根据环境设置webpack
-if(isDev) {
+if (isDev) {
   config.module.rules.push({
     test: /\.styl/,
     use: [
@@ -108,7 +108,7 @@ if(isDev) {
   )
   config.plugins.push(
     new ExtractPlugin('styles.[contentHash:8].css'),
-     // 实现类库文件的独立打包，注意名字要和上面的vender相同
+    // 实现类库文件的独立打包，注意名字要和上面的vender相同
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
     }),

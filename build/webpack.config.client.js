@@ -13,7 +13,7 @@ const devServer = {
   host: 'localhost',
   port: 8080,
   historyApiFallback: {
-    index: 'index.html'
+    index: '/public/index.html'
   },
   overlay: {
     errors: true // 错误展示在网页上
@@ -35,10 +35,10 @@ const defaultPlugins = [
   new VueClientPlugin()
 ]
 
-if(isDev) {
+if (isDev) {
   // 开发环境，开发环境配置合并主配置
   config = merge(baseConfig, {
-    devtool : '#cheap-module-eval-source-map',
+    devtool: '#cheap-module-eval-source-map',
     module: {
       rules: [
         {
@@ -95,13 +95,13 @@ if(isDev) {
     plugins: defaultPlugins.concat([
       new ExtractPlugin('styles.[contentHash:8].css'),
       // 实现类库文件的独立打包，注意名字要和上面的vender相同
-     new webpack.optimize.CommonsChunkPlugin({
-       name: 'vendor'
-     }),
-     // 将 生成在app.js中webpack的相关的代码
-     new webpack.optimize.CommonsChunkPlugin({
-       name: 'manifest'
-     })
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor'
+      }),
+      // 将 生成在app.js中webpack的相关的代码
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest'
+      })
     ])
   })
 }

@@ -2,7 +2,7 @@ const Router = require('koa-router')
 const axios = require('axios')
 const path = require('path')
 const fs = require('fs')
-const MemoryFS = require('memory-fs') //fs api , 不把文件写入磁盘而是写入内存，效率高
+const MemoryFS = require('memory-fs') // fs api , 不把文件写入磁盘而是写入内存，效率高
 const webpack = require('webpack')
 const VueServerRenderer = require('vue-server-renderer')
 
@@ -29,7 +29,7 @@ serverCompiler.watch({}, (err, stats) => {
   console.log('new bundle generated')
 })
 
-const handlerSSR = async (ctx) => {
+const handleSSR = async (ctx) => {
   // 服务刚启动的时候
   if (!bundle) {
     ctx.body = '你等一会，别着急......'
@@ -37,7 +37,7 @@ const handlerSSR = async (ctx) => {
   }
 
   const clientManifestResp = await axios.get(
-    'http://127.0.0.1:8000/public/vue-ssr-client-manifest.json'
+    'http://127.0.0.1:8080/public/vue-ssr-client-manifest.json'
   )
   const clientManifest = clientManifestResp.data
 
@@ -54,3 +54,8 @@ const handlerSSR = async (ctx) => {
 
   await serverRender(ctx, renderer, template)
 }
+
+const router = new Router()
+router.get('*', handleSSR)
+
+module.exports = router

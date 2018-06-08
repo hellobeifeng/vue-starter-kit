@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 
 import App from './app.vue'
-import createStore from './store/store'
+import createStore from './store/index'
 import createRouter from './config/router'
 
 import './assets/styles/global.styl'

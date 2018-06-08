@@ -5,12 +5,13 @@ const config = {
   entry: path.join(__dirname, '../client/index.js'), // default
   output: {
     filename: 'bundle.[hash:8].js',
-    path: path.join(__dirname, '../dist')
+    path: path.join(__dirname, '../dist'),
+    publicPath: 'http://127.0.0.1:8080/public/'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-     '@': path.join(__dirname, '../client')
+      '@': path.join(__dirname, '../client')
     }
   },
   module: {
