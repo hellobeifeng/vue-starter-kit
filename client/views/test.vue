@@ -7,6 +7,9 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: 'into the test'
+  }
 }
 </script>
 

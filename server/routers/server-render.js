@@ -12,15 +12,13 @@ module.exports = async (ctx, renderer, template) => {
     //   return ctx.redirect(context.router.currentRoute.fullPath)
     // }
 
-    // const {
-    //   title
-    // } = context.meta.inject()
+    const { title } = context.meta.inject()
 
     const html = ejs.render(template, {
       appString,
       style: context.renderStyles(),
-      scripts: context.renderScripts()
-      // title: title.text(),
+      scripts: context.renderScripts(),
+      title: title.text()
       // initalState: context.renderState()
     })
 

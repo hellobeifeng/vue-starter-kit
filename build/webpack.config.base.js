@@ -2,10 +2,10 @@ const path = require('path')
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, '../client/index.js'), // default
+  entry: path.join(__dirname, '../client/client-entry.js'), // default
   output: {
     filename: 'bundle.[hash:8].js',
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../public'),
     publicPath: 'http://127.0.0.1:8080/public/'
   },
   resolve: {

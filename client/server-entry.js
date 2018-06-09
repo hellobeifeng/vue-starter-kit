@@ -25,6 +25,7 @@ export default context => {
       //   context.router = router
       //   resolve(app)
       // })
+      context.meta = app.$meta()
       resolve(app)
     })
   })

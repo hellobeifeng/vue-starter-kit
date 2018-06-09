@@ -3,7 +3,7 @@ const send = require('koa-send')
 const path = require('path')
 const app = new Koa()
 
-const pageRouter = require('./routers/dev-ssr')
+const staticRouter = require('./routers/static')
 
 const isDev = process.env.NODE_ENV === 'development' // 服务器端渲染区分开发和线上环境
 
@@ -29,6 +29,17 @@ app.use(async (ctx, next) => {
     await next()
   }
 })
+
+app.use(staticRouter.routes()).use(staticRouter.allowedMethods())
+
+let pageRouter
+if (isDev) {
+  pageRouter = require('./routers/dev-ssr')
+  // pageRouter = require('./routers/dev-ssr-no-bundle')
+} else {
+  pageRouter = require('./routers/ssr')
+  // pageRouter = require('./routers/ssr-no-bundle')
+}
 
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 

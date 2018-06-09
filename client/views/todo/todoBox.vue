@@ -8,6 +8,9 @@
 <script>
 import Todo from './todo.vue'
 export default {
+  metaInfo: {
+    title: 'into the todo app'
+  },
   beforeRouteEnter (to, from, next) {
     console.log('##todo box before enter')
     // 相同类型的路由重复切换，不会触发这个，只会触发下面的beforeRouteUpdate

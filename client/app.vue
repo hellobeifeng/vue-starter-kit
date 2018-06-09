@@ -10,6 +10,9 @@
 <script>
 import Header from './layout/header.vue'
 export default {
+  metaInfo: {
+    title: 'feng\'s ssr app'
+  },
   components: {
     Header
   }

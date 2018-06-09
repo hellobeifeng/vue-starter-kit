@@ -1,5 +1,6 @@
 .DS_Store
-dist/
+public/
 npm-debug.log
 node_modules
 .vscode/
+server-build
