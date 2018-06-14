@@ -4,6 +4,11 @@ const path = require('path')
 const app = new Koa()
 
 const staticRouter = require('./routers/static')
+const apiRouter = require('./routers/api')
+const createDb = require('./db/db')
+const config = require('../app.config')
+
+const db = createDb(config.db.appId, config.db.appKey)
 
 const isDev = process.env.NODE_ENV === 'development' // 服务器端渲染区分开发和线上环境
 
@@ -23,6 +28,11 @@ app.use(async (ctx, next) => {
 })
 
 app.use(async (ctx, next) => {
+  ctx.db = db
+  await next()
+})
+
+app.use(async (ctx, next) => {
   if (ctx.path === '/favicon.ico') {
     await send(ctx, '/favicon.ico', { root: path.join(__dirname, '../') })
   } else {
@@ -31,6 +41,7 @@ app.use(async (ctx, next) => {
 })
 
 app.use(staticRouter.routes()).use(staticRouter.allowedMethods())
+app.use(apiRouter.routes()).use(apiRouter.allowedMethods())
 
 let pageRouter
 if (isDev) {
