@@ -4,9 +4,6 @@ import routes from './routes'
 export default () => {
   return new Router({
     routes,
-    // mode: 'history',
-    linkActiveClass: 'active-link',
-    linkExactActiveClass: 'exact-active-link',
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
