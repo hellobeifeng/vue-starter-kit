@@ -68,7 +68,7 @@ if (isDev) {
       filename: '[name].[chunkhash:8].js'
     },
     entry: {
-      app: path.join(__dirname, '../src/index.js'),
+      app: path.join(__dirname, '../src/main.js'),
       vendor: ['vue']
     },
     module: {

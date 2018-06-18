@@ -9,3 +9,11 @@
 - [x] 支持 precommit git hook
 - [x] 使用 webpack-dev-server 运行 开发环境时，自动打开浏览器
 - [x] 预设了对 css / jsx / vue / stylus 文件和主流图片类型的文件编译支持
+
+
+### 目录结构
+- util.js - ?? 合并一下
+- webpack-chunkname 懒加载这个没起作用
+- 如何正确持续引入图标
+
+- babel-polyfill babel-runtime fastclick
