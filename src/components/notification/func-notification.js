@@ -1,5 +1,6 @@
 import Notification from './notification.vue'
 
+// 覆盖 notification.vue 中定义的属性
 export default {
   extends: Notification,
   computed: {

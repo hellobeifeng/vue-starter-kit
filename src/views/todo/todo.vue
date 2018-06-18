@@ -3,6 +3,7 @@
     <div class="tab-container">
       <tabs :value="filter" @change="handleChangeTab">
         <tab :label="tab" :index="tab" v-for="tab in stats" :key="tab" />
+        <!-- <tab index='2'><span slot="label" style="color: red;">插槽式使用</span></tab> -->
       </tabs>
     </div>
     <input

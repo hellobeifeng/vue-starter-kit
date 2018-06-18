@@ -10,7 +10,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-     '@': path.join(__dirname, '../src')
+      '@': path.join(__dirname, '../src')
     }
   },
   module: {

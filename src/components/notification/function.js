@@ -4,7 +4,7 @@ import Component from './func-notification'
 const NotificationConstructor = Vue.extend(Component)
 
 const instances = []
-let seed = 1
+let seed = 1 // 组建id
 
 const removeInstance = (instance) => {
   if (!instance) return
@@ -22,12 +22,11 @@ const removeInstance = (instance) => {
 }
 
 const notify = (options) => {
-  if (Vue.prototype.$isServer) return
-
   const {
     autoClose,
     ...rest
   } = options
+
   const instance = new NotificationConstructor({
     propsData: {
       ...rest
@@ -39,7 +38,7 @@ const notify = (options) => {
 
   const id = `notification_${seed++}`
   instance.id = id
-  instance.vm = instance.$mount()
+  instance.vm = instance.$mount() // 返回一个 vue 对象
   document.body.appendChild(instance.vm.$el)
   instance.vm.visible = true
 
@@ -50,6 +49,7 @@ const notify = (options) => {
   verticalOffset += 16
   instance.verticalOffset = verticalOffset
   instances.push(instance)
+  // 删除 dom节点 start
   instance.vm.$on('closed', () => {
     removeInstance(instance)
     document.body.removeChild(instance.vm.$el)
@@ -58,6 +58,7 @@ const notify = (options) => {
   instance.vm.$on('close', () => {
     instance.vm.visible = false
   })
+  // 删除 dom节点 end
   return instance.vm
 }
 

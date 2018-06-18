@@ -17,7 +17,7 @@ export default {
       panes: []
     }
   },
-  render () {
+  render () { // 此处为 jsx 语法，webpack.config.base中做了处理 TODO改一下
     return (
       <div class='tabs'>
         <ul class='tabs-header'>
@@ -28,6 +28,7 @@ export default {
     )
   },
   methods: {
+    // todo ?? 外边可以通过onchange 监听到？
     onChange (index) {
       this.$emit('change', index)
     }
