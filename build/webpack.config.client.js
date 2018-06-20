@@ -38,6 +38,14 @@ if (isDev) {
   // 开发环境，开发环境配置合并主配置
   config = merge(baseConfig, {
     devtool: '#cheap-module-eval-source-map',
+    // proxyTable: {
+    //   '/api': {
+    //     target: 'http://localhost:8080',
+    //     pathRewrite: {
+    //       '^/api': '/static/mock'
+    //     }
+    //   }
+    // },
     module: {
       rules: [
         {
