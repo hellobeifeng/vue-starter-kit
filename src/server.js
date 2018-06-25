@@ -37,6 +37,7 @@ module.exports = app.listen(port, function (err) {
   console.log('Listening at http://localhost:' + port + '\n')
 })
 
+// 试一下下面的这套流程
 // // js
 // export function getDiscList() {
 //   const url = '/api/getDiscList'
@@ -65,3 +66,12 @@ module.exports = app.listen(port, function (err) {
 //     this.discList = res.data.list
 //   }
 // })
+// // webpack-dev
+// proxy: {
+//   '/api': {
+//     target: 'http://localhost:9099',
+//     pathRewrite: {
+//       '^/api': '/static/mock'
+//     }
+//   }
+// },

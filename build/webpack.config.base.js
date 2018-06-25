@@ -2,7 +2,7 @@ const path = require('path')
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, '../src/main.js'), // default
+  entry: path.join(__dirname, '../src/main.js'),
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist')
@@ -19,7 +19,7 @@ const config = {
         test: /\.(vue|js)/,
         loader: 'eslint-loader',
         exclude: /node_module/,
-        enforce: 'pre' // 对于这几种类型的文件在真正的loader处理之前，先执行此处的预处理
+        enforce: 'pre'
       },
       {
         test: /\.vue$/,
@@ -47,7 +47,7 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192, // 8Kb;少于此处Limit的图片不会被单独输出成文件，而是会被转码成base64输出在文件中
+              limit: 8192, // 8Kb
               name: 'resources/[path][name].[hash:8].[ext]'
             }
           }

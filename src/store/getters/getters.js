@@ -1,5 +1,5 @@
 export default {
-  fullName (state) {
-    return `${state.firstName} 123 ${state.lastName}`
+  example (state) {
+    return `${state.state1} 测试用 ${state.state2}`
   }
 }

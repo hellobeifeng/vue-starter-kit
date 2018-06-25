@@ -21,7 +21,7 @@ import Header from './layout/header.vue'
 import Loading from './components/loading/loading.vue'
 export default {
   metaInfo: {
-    title: 'Jokcy\'s Todo App'
+    title: 'vue脚手架'
   },
   methods: {
     // ...mapActions(['updateCountAsync']),
@@ -37,6 +37,12 @@ export default {
     Header,
     Loading
   },
+  mounted () {
+    this.$notify({
+      content: '测试一下通知弹窗',
+      btn: 'close'
+    })
+  },
   computed: {
     ...mapState(['loading'])
   }
@@ -44,5 +50,4 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
 </style>

@@ -11,10 +11,6 @@ export default [
     meta: {
       title: 'this is todo',
       description: 'todo app'
-    },
-    beforeEnter (to, from, next) {
-      console.log('app route before enter')
-      next()
     }
   },
   {
