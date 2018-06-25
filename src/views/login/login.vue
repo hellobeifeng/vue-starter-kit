@@ -47,7 +47,7 @@ export default {
           password: this.password
         })
           .then(() => {
-            this.$router.replace('/app')
+            this.$router.replace('/')
           })
       }
     },

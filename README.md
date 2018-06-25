@@ -98,7 +98,7 @@
 - [x] 支持 eslint 校验, 对js vue 文件，会在文件保存后，其他module rule生效前检查，如果出错中止后续行为，提高效率
 - [x] 支持 editorconfig 的
 - [x] 支持 precommit git hook
-- [x]
+- [x] 预制了自定义的弹窗组件、Loading组件、tab切换组件
 - [x] 预设了对 css / jsx / vue / stylus 文件和主流图片类型的文件编译支持
 
 
@@ -108,7 +108,7 @@
 - icon流程
 - logo确认
 - bus-auth
-
+- 自定义组件
 - util.js - ?? 合并一下
 - webpack-chunkname 懒加载这个没起作用
 - 如何正确持续引入图标

@@ -17,7 +17,7 @@ export default {
       panes: []
     }
   },
-  render () { // 此处为 jsx 语法，webpack.config.base中做了处理 TODO改一下
+  render () {
     return (
       <div class='tabs'>
         <ul class='tabs-header'>

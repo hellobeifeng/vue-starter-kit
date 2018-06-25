@@ -5,14 +5,12 @@ var createNum = function () {
   return Math.floor(Math.random() * 10)
 }
 
-const handleError = (err) => {
+const handleError = () => {
   // handle error
-  if (err.code === 401) {
-    notify({
-      content: '你得先登录啊！'
-    })
-    bus.$emit('auth')
-  }
+  notify({
+    content: '你还得在登陆一下！'
+  })
+  bus.$emit('auth')
 }
 
 const fetchTodoData = [
