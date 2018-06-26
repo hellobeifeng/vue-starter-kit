@@ -5,7 +5,8 @@ import App from './app.vue'
 import bus from './util/bus'
 
 import './assets/styles/global.styl'
-// import '/assets/styles/index.styl'
+import './assets/styles/index.styl'
+// import './assets/styles/iconfont.css'
 // 两个自定义组件
 import Notification from './components/notification'
 import Tabs from './components/tabs'

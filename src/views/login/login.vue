@@ -2,6 +2,7 @@
   <form class="login-form" @submit="doSubmit">
     <h1>
       <span>Login</span>
+      <i class="icon-shenfenzheng"></i>
       <span class="error-msg" v-show="errorMsg">{{errorMsg}}</span>
     </h1>
     <input
@@ -104,7 +105,9 @@ export default {
 .error-msg
   font-size 12px
   color red
-
+icon-yigouxuan
+  font-size 16px;
+  color black
 @media screen and (max-width: 600px) {
   .login-form {
     width 90%
