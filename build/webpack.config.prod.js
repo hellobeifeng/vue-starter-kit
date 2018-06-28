@@ -41,7 +41,9 @@ const config = merge(baseConfig, {
       }
     }),
     new HTMLPlugin({
-      template: path.join(__dirname, 'template.html')
+      template: path.join(__dirname, 'template.html'),
+      inject: true,
+      favicon:'./favicon.ico'
     }),
     new ExtractPlugin('styles.[contentHash:8].css'),
     // 实现类库文件的独立打包，注意名字要和上面的vender相同

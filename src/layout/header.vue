@@ -1,6 +1,6 @@
 <template>
   <header class="mainHeader">
-    <h1>JTodo</h1>
+    <h1>Just do it !</h1>
   </header>
 </template>
 
