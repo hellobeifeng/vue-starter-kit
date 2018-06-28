@@ -1,95 +1,35 @@
 # vue-starter-kit
 一个用于快速搭建前端vue工程的脚手架
 
-## 目录结构
+## 一、基本使用
+### 介绍
 
-  `tree -I '*git|*node_modules'`
-
-
-├── build
-│   ├── template.html 模板html 用于插值webpack构建生成的js模块
-│   ├── webpack.config.base.js
-│   └── webpack.config.dev.js
-│   └── webpack.config.dev.js
-├── dist
-│   ├── app.861bf1b1.js
-│   ├── manifest.ef31be5c.js
-│   ├── resources
-│   │   └── src
-│   │       └── assets
-│   │           └── images
-│   │               └── 3100kb.96f76140.jpg
-│   ├── styles.546ddec1.css
-│   └── vendor.08050b62.js
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── src
-│   ├── app.vue
-│   ├── assets
-│   │   ├── fonts
-│   │   │   ├── music-icon.eot
-│   │   │   ├── music-icon.svg
-│   │   │   ├── music-icon.ttf
-│   │   │   └── music-icon.woff
-│   │   ├── images
-│   │   └── styles
-│   │       ├── base.styl
-│   │       ├── global.styl
-│   │       ├── icon.styl
-│   │       ├── index.styl
-│   │       ├── mixin.styl
-│   │       ├── reset.styl
-│   │       └── variable.styl
-│   ├── components
-│   │   ├── loading
-│   │   │   └── loading.vue
-│   │   ├── notification
-│   │   │   ├── func-notification.js
-│   │   │   ├── function.js
-│   │   │   ├── index.js
-│   │   │   └── notification.vue
-│   │   └── tabs
-│   │       ├── index.js
-│   │       ├── tab-container.vue
-│   │       ├── tab.vue
-│   │       └── tabs.vue
-│   ├── layout
-│   │   └── header.vue
-│   ├── main.js
-│   ├── router
-│   │   ├── index.js
-│   │   └── routes.js
-│   ├── server.js
-│   ├── store
-│   │   ├── actions
-│   │   │   └── actions.js
-│   │   ├── getters
-│   │   │   └── getters.js
-│   │   ├── mutations
-│   │   │   └── mutations.js
-│   │   ├── state
-│   │   │   └── state.js
-│   │   └── store.js
-│   ├── util
-│   │   ├── bus.js
-│   │   └── util.js
-│   └── views
-│       ├── login
-│       │   └── login.vue
-│       └── todo
-│           ├── helper.vue
-│           ├── item.vue
-│           └── todo.vue
-└── webpack.config.js
-
-## 技术站
+使用的主要的技术如下
 - webpack 3.10
 - express 4.16
 - vue 2.5
 - vuex 3.0
 - vue-router 3.0
 - axios
+
+
+### 如何使用
+
+执行下面命令，以当前脚手架为模板创建vue单页应用项目
+
+    vue init <git repo> <project name>
+### 执行命令介绍
+
+    npm run build    | 执行构建，产出编译后的文件
+    npm run dev      | 使用 webpack-dev-server 运行开发环境
+    npm run lint     | 对 src/ 目录下的 js 和 vue文件，执行 eslint 校验
+    npm run lint-fix | 用于快速修复上一步的 eslint 错误
+
+## 二、目录结构
+
+  `tree -I '*git|*node_modules'`
+
+
 
 ## 目前支持功能如下
 
