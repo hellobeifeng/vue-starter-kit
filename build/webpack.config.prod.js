@@ -8,7 +8,8 @@ const merge = require('webpack-merge')
 // 根据环境设置webpack
 const config = merge(baseConfig, {
   output: {
-    filename: '[name].[chunkhash:8].js'
+    filename: '[name].[chunkhash:8].js',
+    chunkFilename: '[name].[chunkhash:8].js' // 指定分离出来的代码文件的名称
   },
   entry: {
     app: path.join(__dirname, '../src/main.js'),
@@ -18,6 +19,7 @@ const config = merge(baseConfig, {
     rules: [
       {
         test: /\.styl/,
+        // 因为这个插件需要干涉模块转换的内容，所以需要使用它对应的 loader
         use: ExtractPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -41,9 +43,14 @@ const config = merge(baseConfig, {
       }
     }),
     new HTMLPlugin({
-      template: path.join(__dirname, 'template.html'),
+      title: '一个脚手架',
+      template: path.join(__dirname, 'template.ejs'),
       inject: true,
-      favicon:'./favicon.ico'
+      favicon: path.resolve('favicon.ico'),
+      // minify: { // 压缩 HTML 的配置
+      //   minifyCSS: true, // 压缩 HTML 中出现的 CSS 代码
+      //   minifyJS: true // 压缩 HTML 中出现的 JS 代码
+      // }
     }),
     new ExtractPlugin('styles.[contentHash:8].css'),
     // 实现类库文件的独立打包，注意名字要和上面的vender相同

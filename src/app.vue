@@ -11,12 +11,7 @@
   </div>
 </template>
 <script>
-import {
-  mapState
-//   mapGetters,
-//   mapActions,
-//   mapMutations
-} from 'vuex'
+import { mapState } from 'vuex'
 import Header from './layout/header.vue'
 import Loading from './components/loading/loading.vue'
 export default {

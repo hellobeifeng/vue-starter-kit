@@ -11,6 +11,7 @@
 - vuex 3.0
 - vue-router 3.0
 - axios
+- babel
 
 
 ### 如何使用
@@ -34,13 +35,14 @@
 ## 目前支持功能如下
 
 - [x] 使用自定义 webpack 配置文件 ，支持区分 开发模式 和 构建模式:sparkles:
-- [x] 开发环境使用 webpack-dev-server 支持自动打开浏览器、模块热重载等
+- [x] 本地提供静态服务 webpack-dev-server 支持自动打开浏览器、模块热重载等
 - [x] 支持 eslint 校验, 对js vue 文件，会在文件保存后，其他module rule生效前检查，如果出错中止后续行为，提高效率
 - [x] 支持 editorconfig 的
 - [x] 集成了 vuex 和 vue-router 并通过一个TODO应用实现最佳实践
 - [x] 支持 precommit git hook
 - [x] 预制了自定义的弹窗组件、Loading组件、tab切换组件
 - [x] 预设了对 css / jsx / vue / stylus 文件和主流图片类型的文件以及图标字体文件编译支持
+- [x] 预制了 babel 配置 支持 es6 新特性
 - [x] 支持设置项目 favicon.ico
 
 ## 关于如何正确持续引入图标
@@ -53,11 +55,9 @@
 
 ## TODO
 
-- proxy流程
-- icon流程
+- proxy实现跨域接口的访问
 - bus-auth
 - 自定义组件
-- util.js - ?? 合并一下
 - webpack-chunkname 懒加载这个没起作用
 
 

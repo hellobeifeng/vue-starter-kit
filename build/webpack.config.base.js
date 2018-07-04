@@ -23,7 +23,10 @@ const config = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        include: [
+          path.resolve(__dirname, '../src')
+        ]
       },
       {
         test: /\.jsx$/,
