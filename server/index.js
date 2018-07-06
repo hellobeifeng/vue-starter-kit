@@ -6,18 +6,15 @@ var axios = require('axios')
 var app = express()
 var apiRoutes = express.Router()
 
-apiRoutes.get('/getlist', function (req, res) {
-  var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
-  axios.get(url, {
-    headers: {
-      referer: 'https://c.y.qq.com/',
-      host: 'c.y.qq.com'
+apiRoutes.get('/testProxy', function (req, res) {
+  res.json({
+    "data" : {
+      "content": "from_server"
     },
-    params: req.query
-  }).then((response) => {
-    res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
+    "message": {
+      "message": "",
+      "code": 0
+    }
   })
 })
 
@@ -27,7 +24,7 @@ apiRoutes.get('/', function (req, res, next) {
 app.use('/api', apiRoutes) // /api/getlist
 
 app.use(express.static('../dist'))
-app.use('/self', express.static(path.resolve(__dirname, '../dist')))
+app.use('/', express.static(path.resolve(__dirname, '../dist')))
 
 module.exports = app.listen(port, function (err) {
   if (err) {

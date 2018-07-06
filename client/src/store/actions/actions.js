@@ -1,6 +1,8 @@
 import notify from '../../components/notification/function'
 import bus from '../../util/bus'
 import { createError } from '../../util/util'
+import requestModel from '../../util/requestModel.js'
+
 var createNum = function () {
   return Math.floor(Math.random() * 10)
 }
@@ -69,6 +71,18 @@ export default {
       commit('endLoading')
       commit('updateTodo', { id, todo: todo })
     }, 1000)
+  },
+  testProxy ({ commit }) {
+    commit('startLoading')
+    return requestModel.testProxy()
+      .then(data => {
+        commit('endLoading')
+        return data
+      })
+      .catch(err => {
+        commit('endLoading')
+        handleError(err)
+      })
   },
   deleteTodo ({ commit }, id) {
     commit('startLoading')

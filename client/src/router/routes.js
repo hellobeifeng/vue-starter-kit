@@ -16,5 +16,9 @@ export default [
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login-view" */ '@/views/login/login.vue')
+  },
+  {
+    path: '/test',
+    component: () => import(/* webpackChunkName: "testProxy-view" */ '@/views/test/test.vue')
   }
 ]

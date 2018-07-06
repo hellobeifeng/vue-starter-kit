@@ -13,9 +13,7 @@
 - axios
 - babel
 
-
 ### 如何使用
-
 执行下面命令，以当前脚手架为模板创建vue单页应用项目
 
     vue init <git repo> <project name>
@@ -29,7 +27,6 @@
 ## 二、目录结构
 
   `tree -I '*git|*node_modules'`
-
 
 
 ## 目前支持功能如下
@@ -55,10 +52,8 @@
 
 ## TODO
 
-- proxy实现跨域接口的访问
 - bus-auth
 - 自定义组件
-- webpack-chunkname 懒加载这个没起作用
 
 
 - babel-polyfill babel-runtime fastclick

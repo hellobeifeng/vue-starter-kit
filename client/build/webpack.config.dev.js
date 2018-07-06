@@ -3,6 +3,11 @@ const webpack = require('webpack')
 const HTMLPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const merge = require('webpack-merge')
+const config = require('../config')
+var proxyConfig = config[process.env.NODE_ENV || 'development'].proxyTable
+
+console.log('##')
+console.log(proxyConfig)
 
 // 根据环境设置webpack
 const devServer = {
@@ -17,17 +22,10 @@ const devServer = {
   },
   hot: true,
   open: true,
-  proxy: {
-    '/api': {
-      target: 'http://localhost:9099',
-      pathRewrite: {
-        '^/api': '/static/mock'
-      }
-    }
-  },
+  proxy: proxyConfig
 }
 
-let config = merge(baseConfig, {
+let webpackConfig = merge(baseConfig, {
   devtool: '#cheap-module-eval-source-map',
   module: {
     rules: [
@@ -65,4 +63,4 @@ let config = merge(baseConfig, {
   ]
 })
 
-module.exports = config
+module.exports = webpackConfig

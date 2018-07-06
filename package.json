@@ -4,12 +4,13 @@
   "description": "一个用于快速搭建前端 vue 工程的脚手架",
   "main": "src/main.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.dev.js",
-    "build": "npm run clean && cross-env NODE_ENV=production webpack --config build/webpack.config.prod.js",
+    "dev": "cd client && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.dev.js",
+    "build": "cd client && npm run clean && cross-env NODE_ENV=production webpack --config build/webpack.config.prod.js",
     "clean": "rimraf dist",
-    "lint": "eslint --ext .js --ext .vue src/",
-    "lint-fix": "eslint --fix --ext .js --ext .vue src/",
-    "precommit": "npm run lint-fix"
+    "lint": "cd client && eslint --ext .js --ext .vue src/",
+    "lint-fix": "cd client && eslint --fix --ext .js --ext .vue src/",
+    "precommit": "npm run lint-fix",
+    "dev-server": "cd server && node index.js"
   },
   "repository": {
     "type": "git",
