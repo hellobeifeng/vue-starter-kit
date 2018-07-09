@@ -84,16 +84,16 @@
     │           │   └── test.vue
     │           └── todo                    todo 组件
     ├── dist                              构建目录
-    │   ├── app.f59aa2ed.js
+    │   ├── app.f59aa2ed.js                 构建核心代码
     │   ├── favicon.ico
     │   ├── index.html
-    │   ├── login-view.33484d2b.js
-    │   ├── manifest.1322d5be.js
+    │   ├── login-view.33484d2b.js          懒加载的组件代码
+    │   ├── manifest.1322d5be.js            app.xxx.js中webpack相关函数代码
     │   ├── resources
-    │   ├── styles.1a64ffe2.css
-    │   ├── testProxy-view.9b4a3633.js
-    │   ├── todo-view.7e2216e3.js
-    │   └── vendor.15f297d6.js
+    │   ├── styles.1a64ffe2.css             样式分离文件（不包括组件内的样式）
+    │   ├── testProxy-view.9b4a3633.js      懒加载的组件代码
+    │   ├── todo-view.7e2216e3.js           懒加载的组件代码
+    │   └── vendor.15f297d6.js              公共库代码
     ├── package-lock.json
     ├── package.json
     ├── postcss.config.js                  postcss 配置文件
@@ -110,14 +110,3 @@
     - 4.1、如果是首次引入字体文件，将文件夹内 css文件改名为`.styl`后缀复制到`src/assets/styles`文件夹内；
     - 4.2、如果不是首次引入而是向项目追加字体文件，则将下载的然后复制修改 css文件中第6行base64，替换掉对应文件的对应内容
     - 5、开始使用`<div class="icon-left"></div>`
-
-### 拓展讲解
-- webpack-merge 和 _.lodash等其他merge工具方法的区别
-- webpack
-- 打包
-  - chrome并行请求文件限制
-  - 浏览器是否会并行请求js
-  - 打包结果全展示
-  - chunkhash contenthash hash
-  - webpack 打包 chunkFilename filename 是否同时需要
-- bus-auth
