@@ -6,9 +6,6 @@ const merge = require('webpack-merge')
 const config = require('../config')
 var proxyConfig = config[process.env.NODE_ENV || 'development'].proxyTable
 
-console.log('##')
-console.log(proxyConfig)
-
 // 根据环境设置webpack
 const devServer = {
   host: 'localhost',
@@ -26,6 +23,10 @@ const devServer = {
 }
 
 let webpackConfig = merge(baseConfig, {
+  output: {
+    filename: '[name].[hash:8].js',
+    chunkFilename: '[name].[hash:8].js' // 指定分离出来的代码文件的名称
+  },
   devtool: '#cheap-module-eval-source-map',
   module: {
     rules: [
