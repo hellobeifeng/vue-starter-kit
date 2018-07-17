@@ -4,7 +4,6 @@
     <div id="loading" v-show="loading">
       <loading></loading>
     </div>
-    <Header></Header>
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
@@ -12,7 +11,6 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import Header from './layout/header.vue'
 import Loading from './components/loading/loading.vue'
 export default {
   metaInfo: {
@@ -29,15 +27,9 @@ export default {
     }
   },
   components: {
-    Header,
     Loading
   },
-  mounted () {
-    this.$notify({
-      content: '测试一下通知弹窗',
-      btn: 'close'
-    })
-  },
+  mounted () {},
   computed: {
     ...mapState(['loading'])
   }

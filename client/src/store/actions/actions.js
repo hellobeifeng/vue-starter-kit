@@ -30,6 +30,9 @@ function createTodo () {
 }
 
 export default {
+  ToggleSideBar: ({ commit }) => {
+    commit('TOGGLE_SIDEBAR')
+  },
   login ({ commit }, { username, password }) {
     commit('startLoading')
     return new Promise((resolve, reject) => {
